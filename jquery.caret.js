@@ -16,6 +16,9 @@
             $.setCaretTo(this, pos);
         });
     };
+    $.fn.setCaretToStart = function () {
+        return this.setCaretTo(0);
+    };
     $.fn.setCaretToEnd = function () {
         return this.each(function () {
             $.setCaretTo(this, $(this).val().length);
