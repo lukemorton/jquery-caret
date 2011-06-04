@@ -1,5 +1,10 @@
+// Set caret position easily in jQuery
+// Written by and Copyright of Luke Morton, 2011
+// Licensed under MIT
 (function ($) {
-    $.setCaretTo = function (el, pos) {
+    // Behind the scenes method deals with browser
+    // idiosyncrasies and such
+    $.caretTo = function (el, pos) {
         if (el.createTextRange) { 
             var range = el.createTextRange(); 
             range.move("character", pos); 
@@ -7,22 +12,30 @@
         } else if (el.selectionStart != null) { 
             el.focus(); 
             el.setSelectionRange(pos, pos); 
-        } else {
-            $.error('Unknown selection implementation.');
         }
     };
-    $.fn.setCaretTo = function (pos) {
+
+    // The following methods are queued under fx for more
+    // flexibility when combining with $.fn.delay() and
+    // jQuery effects.
+
+    // Set caret to a particular index
+    $.fn.caretTo = function (pos) {
         return this.queue(function (next) {
-            $.setCaretTo(this, pos);
+            $.caretTo(this, pos);
             next();
         });
     };
-    $.fn.setCaretToStart = function () {
-        return this.setCaretTo(0);
+
+    // Set caret to beginning of an element
+    $.fn.caretToStart = function () {
+        return this.caretTo(0);
     };
-    $.fn.setCaretToEnd = function () {
+
+    // Set caret to the end of an element
+    $.fn.caretToEnd = function () {
         return this.queue(function (next) {
-            $.setCaretTo(this, $(this).val().length);
+            $.caretTo(this, $(this).val().length);
             next();
         });
     };
