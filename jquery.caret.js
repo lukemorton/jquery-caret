@@ -14,13 +14,35 @@
             el.setSelectionRange(index, index); 
         }
     };
+    
+    // Another behind the scenes that collects the
+    // current caret position for an element
+    $.caretPos = function (el) {
+        if ('selection' in document) {
+            console.log('ie');
+            // Thanks to: http://goo.gl/7Pxn8
+            var range = document.selection.createRange(),
+                storedRange = range.duplicate();
+                
+            storedRange.moveToElementText(element);
+            storedRange.setEndPoint('EndToEnd', range);
+            return storedRange.text.length - range.text.length;
+            
+        } else if (el.selectionStart != null) {
+            return el.selectionStart;
+        }
+    };
 
     // The following methods are queued under fx for more
     // flexibility when combining with $.fn.delay() and
     // jQuery effects.
 
     // Set caret to a particular index
-    $.fn.caretTo = function (index, offset) {
+    $.fn.caret = function (index, offset) {
+        if (typeof(index) === "undefined") {
+            return $.caretPos(this.get(0));
+        }
+        
         return this.queue(function (next) {
             if (isNaN(index)) {
                 var i = $(this).val().indexOf(index);
@@ -42,7 +64,7 @@
 
     // Set caret to beginning of an element
     $.fn.caretToStart = function () {
-        return this.caretTo(0);
+        return this.caret(0);
     };
 
     // Set caret to the end of an element
