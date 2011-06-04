@@ -4,14 +4,14 @@
 (function ($) {
     // Behind the scenes method deals with browser
     // idiosyncrasies and such
-    $.caretTo = function (el, pos) {
+    $.caretTo = function (el, index) {
         if (el.createTextRange) { 
             var range = el.createTextRange(); 
-            range.move("character", pos); 
+            range.move("character", index); 
             range.select(); 
         } else if (el.selectionStart != null) { 
             el.focus(); 
-            el.setSelectionRange(pos, pos); 
+            el.setSelectionRange(index, index); 
         }
     };
 
@@ -20,9 +20,21 @@
     // jQuery effects.
 
     // Set caret to a particular index
-    $.fn.caretTo = function (pos) {
+    $.fn.caretTo = function (index, offset) {
         return this.queue(function (next) {
-            $.caretTo(this, pos);
+            if (isNaN(index)) {
+                var i = $(this).val().indexOf(index);
+                
+                if (offset === true) {
+                    i += index.length;
+                } else if (offset) {
+                    i += offset;
+                }
+                
+                // Convert string to indexOf position
+                index = i;
+            }
+            $.caretTo(this, index);
             next();
         });
     };
