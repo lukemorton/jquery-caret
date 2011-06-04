@@ -19,14 +19,9 @@
     // current caret position for an element
     $.caretPos = function (el) {
         if ('selection' in document) {
-            // Thanks to: http://goo.gl/7Pxn8
-            var range = document.selection.createRange(),
-                storedRange = range.duplicate();
-                
-            storedRange.moveToElementText(element);
-            storedRange.setEndPoint('EndToEnd', range);
-            return storedRange.text.length - range.text.length;
-            
+            var range = el.createTextRange();
+            range.setEndPoint("EndToStart", document.selection.createRange());
+            return range.text.length;
         } else if (el.selectionStart != null) {
             return el.selectionStart;
         }
