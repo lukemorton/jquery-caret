@@ -31,10 +31,11 @@
                     i += offset;
                 }
                 
-                // Convert string to indexOf position
-                index = i;
+                $.caretTo(this, i);
+            } else {
+                $.caretTo(this, index);
             }
-            $.caretTo(this, index);
+            
             next();
         });
     };
