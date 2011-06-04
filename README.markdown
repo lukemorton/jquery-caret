@@ -10,7 +10,7 @@ any position you like:
 ## $.fn.caret()
 
 Use this method with no parameters to get the current position of the
-caret within the first input.
+caret within the first element matched.
 
 ```
 var position = $('input').caret();
