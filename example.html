@@ -10,15 +10,25 @@
         <h2>&lt;input /&gt; Example</h2>
         <p>
             <input id="input-ex" value="A test string..." />
+		</p>
+		<p>
             <button id="input-start">Jump to start</button>
             <button id="input-end">Jump to end</button>
+			<br />
+			Index: <input id="input-index" value="5" />
+			<button id="input-ex-index">Jump to index</button>
         </p>
         
         <h2>&lt;textarea&gt; Example</h2>
         <p>
             <textarea id="textarea-ex">A test string...</textarea>
+		</p>
+		<p>
             <button id="textarea-start">Jump to start</button>
             <button id="textarea-end">Jump to end</button>
+			<br />
+			Index: <input id="textarea-index" value="5" />
+			<button id="textarea-ex-index">Jump to index</button>
         </p>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -35,13 +45,21 @@
                 $('#input-end').click(function () {
                     $inputExample.caretToEnd();
                 });
+				
+                $('#input-ex-index').click(function () {
+                    $inputExample.caretTo($('#input-index').val());
+                });
                 
-                $('textarea-start').click(function () {
+                $('#textarea-start').click(function () {
                     $textareaExample.caretToStart();
                 });
                 
-                $('textarea-end').click(function () {
+                $('#textarea-end').click(function () {
                     $textareaExample.caretToEnd();
+                });
+				
+                $('#textarea-ex-index').click(function () {
+                    $textareaExample.caretTo($('#textarea-index').val());
                 });
             });
         </script>
