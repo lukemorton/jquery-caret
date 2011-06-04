@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>$.fn.caretTo() Examples</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>$.fn.caretTo() Examples</h1>
+        
+        <h2>&lt;input /&gt; Example</h2>
+        <p>
+            <input id="input-ex" value="A test string..." />
+            <button id="input-start">Jump to start</button>
+            <button id="input-end">Jump to end</button>
+        </p>
+        
+        <h2>&lt;textarea&gt; Example</h2>
+        <p>
+            <textarea id="textarea-ex">A test string...</textarea>
+            <button id="textarea-start">Jump to start</button>
+            <button id="textarea-end">Jump to end</button>
+        </p>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="jquery.caret.js"></script>
+        <script>
+            jQuery(function ($) {
+                var $inputExample = $('#input-ex'),
+                    $textareaExample = $('#textarea-ex');
+                
+                $('#input-start').click(function () {
+                    $inputExample.caretToStart();
+                });
+                
+                $('#input-end').click(function () {
+                    $inputExample.caretToEnd();
+                });
+                
+                $(''textarea-start').click(function () {
+                    $textareaExample.caretToStart();
+                });
+                
+                $(''textarea-end').click(function () {
+                    $textareaExample.caretToEnd();
+                });
+            });
+        </script>
+    </body>
+</html>
