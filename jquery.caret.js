@@ -12,16 +12,18 @@
         }
     };
     $.fn.setCaretTo = function (pos) {
-        return this.queue(function () {
+        return this.queue(function (next) {
             $.setCaretTo(this, pos);
+            next();
         });
     };
     $.fn.setCaretToStart = function () {
         return this.setCaretTo(0);
     };
     $.fn.setCaretToEnd = function () {
-        return this.queue(function () {
+        return this.queue(function (next) {
             $.setCaretTo(this, $(this).val().length);
+            next();
         });
     };
 }(jQuery));
