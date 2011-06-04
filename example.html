@@ -17,6 +17,10 @@
             <br />
             Index: <input id="input-index" value="5" />
             <button id="input-ex-index">Jump to index</button>
+            <br />
+            toString: <input id="input-string" value="string" />
+			after: <input type="checkbox" id="input-string-after" />
+            <button id="input-ex-string">Jump to string</button>
         </p>
         
         <h2>&lt;textarea&gt; Example</h2>
@@ -29,6 +33,10 @@
             <br />
             Index: <input id="textarea-index" value="5" />
             <button id="textarea-ex-index">Jump to index</button>
+            <br />
+            toString: <input id="textarea-string" value="string" />
+			after: <input type="checkbox" id="textarea-string-after" />
+            <button id="textarea-ex-string">Jump to string</button>
         </p>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -50,6 +58,13 @@
                     $inputExample.caretTo($('#input-index').val() * 1);
                 });
                 
+                $('#input-ex-string').click(function () {
+                    $inputExample.caretTo(
+						$('#input-string').val(),
+						$('#input-string-after').is(':checked')
+					);
+                });
+                
                 $('#textarea-start').click(function () {
                     $textareaExample.caretToStart();
                 });
@@ -60,6 +75,13 @@
                 
                 $('#textarea-ex-index').click(function () {
                     $textareaExample.caretTo($('#textarea-index').val() * 1);
+                });
+				
+                $('#textarea-ex-string').click(function () {
+                    $textareaExample.caretTo(
+						$('#textarea-string').val(),
+						$('#textarea-string-after').is(':checked')
+					);
                 });
             });
         </script>
