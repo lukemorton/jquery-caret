@@ -19,7 +19,6 @@
     // current caret position for an element
     $.caretPos = function (el) {
         if ('selection' in document) {
-            console.log('ie');
             // Thanks to: http://goo.gl/7Pxn8
             var range = document.selection.createRange(),
                 storedRange = range.duplicate();
