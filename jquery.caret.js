@@ -12,7 +12,7 @@
         }
     };
     $.fn.setCaretTo = function (pos) {
-        return this.each(function () {
+        return this.queue(function () {
             $.setCaretTo(this, pos);
         });
     };
@@ -20,7 +20,7 @@
         return this.setCaretTo(0);
     };
     $.fn.setCaretToEnd = function () {
-        return this.each(function () {
+        return this.queue(function () {
             $.setCaretTo(this, $(this).val().length);
         });
     };
