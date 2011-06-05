@@ -20,7 +20,7 @@
     
     // TODO: Get working with Opera
     $.caretPos = function (el) {
-        if ('selection' in document) {
+        if ("selection" in document) {
             var range = el.createTextRange();
             try {
                 range.setEndPoint("EndToStart", document.selection.createRange());
@@ -51,7 +51,7 @@
                 
                 if (offset === true) {
                     i += index.length;
-                } else if (offset) {
+                } else if (typeof(offset) !== "undefined") {
                     i += offset;
                 }
                 
