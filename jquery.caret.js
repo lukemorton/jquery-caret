@@ -17,10 +17,18 @@
     
     // Another behind the scenes that collects the
     // current caret position for an element
+    
+    // TODO: Get working with Opera
     $.caretPos = function (el) {
         if ('selection' in document) {
             var range = el.createTextRange();
-            range.setEndPoint("EndToStart", document.selection.createRange());
+            try {
+                range.setEndPoint("EndToStart", document.selection.createRange());
+            } catch (e) {
+                // Catch IE failure here, return 0 like
+                // other browsers
+                return 0;
+            }
             return range.text.length;
         } else if (el.selectionStart != null) {
             return el.selectionStart;
