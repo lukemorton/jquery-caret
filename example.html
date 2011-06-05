@@ -11,7 +11,7 @@
         <p>
             <input id="input-ex" value="A test string..." />
         </p>
-        <p>
+        <div id="input-buttons">
             <button id="input-start">Jump to start</button>
             <button id="input-end">Jump to end</button>
             <br />
@@ -21,13 +21,13 @@
             toString: <input id="input-string" value="string" />
             after: <input type="checkbox" id="input-string-after" />
             <button id="input-ex-string">Jump to string</button>
-        </p>
+        </div>
         
         <h2>&lt;textarea&gt; Example</h2>
         <p>
             <textarea id="textarea-ex">A test string...</textarea>
         </p>
-        <p>
+        <div id="textarea-buttons">
             <button id="textarea-start">Jump to start</button>
             <button id="textarea-end">Jump to end</button>
             <br />
@@ -37,9 +37,9 @@
             toString: <input id="textarea-string" value="string" />
             after: <input type="checkbox" id="textarea-string-after" />
             <button id="textarea-ex-string">Jump to string</button>
-        </p>
+        </div>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
         <script src="jquery.caret.js"></script>
         <script>
             jQuery(function ($) {
@@ -55,6 +55,7 @@
                 });
                 
                 $('#input-ex-index').click(function () {
+                    // Turn to number by multiplication
                     $inputExample.caret($('#input-index').val() * 1);
                 });
                 
@@ -63,6 +64,10 @@
                         $('#input-string').val(),
                         $('#input-string-after').is(':checked')
                     );
+                });
+                
+                $('#input-buttons').click(function () {
+                    if (console.log) console.log($inputExample.caret());
                 });
                 
                 $('#textarea-start').click(function () {
@@ -74,6 +79,7 @@
                 });
                 
                 $('#textarea-ex-index').click(function () {
+                    // Turn to number by multiplication
                     $textareaExample.caret($('#textarea-index').val() * 1);
                 });
                 
@@ -82,6 +88,10 @@
                         $('#textarea-string').val(),
                         $('#textarea-string-after').is(':checked')
                     );
+                });
+                
+                $('#textarea-buttons').click(function () {
+                    if (console.log) console.log($textareaExample.caret());
                 });
             });
         </script>
