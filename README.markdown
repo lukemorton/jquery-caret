@@ -7,7 +7,7 @@ element.
 By exposing three jQuery.fn methods you can easily move a a caret to
 any position you like:
 
-## $.fn.caret()
+## $.fn.caret ( )
 
 Use this method with no parameters to get the current position of the
 caret within the first element matched.
@@ -16,7 +16,7 @@ caret within the first element matched.
 var position = $('input').caret();
 ```
 
-## $.fn.caret( index , [ offset ] )
+## $.fn.caret ( index , [ offset ] )
 
 This methods first parameter is the index of where you want to move
 the caret to. In order to move to an index, index must be an integer.
@@ -42,7 +42,7 @@ $('input').caret('hello', true);
 $('input').caret('hello', 6);
 ```
 
-## $.fn.caretToStart()
+## $.fn.caretToStart ( )
 
 This is a shortcut for $.fn.caret(0) as a convenience to you.
 
@@ -50,7 +50,7 @@ This is a shortcut for $.fn.caret(0) as a convenience to you.
 $('textarea').caretToStart();
 ```
 
-## $.fn.caretToEnd()
+## $.fn.caretToEnd ( )
 
 This method moves the caret to the end of the content within your
 element, also for your convenience.
