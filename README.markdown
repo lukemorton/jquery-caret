@@ -44,6 +44,8 @@ $('input').caret('hello', 6);
 ## $.fn.caretToStart()
 
 This is a shortcut for $.fn.caret(0) as a convenience to you.
+It's actually longer and less efficient than $.fn.caret(0) use
+that, haha.
 
 ```
 $('textarea').caretToStart();
