@@ -22,8 +22,7 @@ This methods first parameter is the index of where you want to move
 the caret to. In order to move to an index, index must be an integer.
 
 Alternatively you can pass a string as an index and it will be used
-via .indexOf() the element's value to get an index to move to. *You
-could also use a RegExp object.*
+via .indexOf() the element's value to get an index to move to.
 
 The second parameter is to be used to move the caret to an offset of
 the index. When set to true, it will move the cursor after the string
