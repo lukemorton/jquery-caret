@@ -12,7 +12,7 @@ any position you like:
 Use this method with no parameters to get the current position of the
 caret within the first element matched.
 
-```
+```javascript
 var position = $('input').caret();
 ```
 
@@ -28,27 +28,8 @@ The second parameter is to be used to move the caret to an offset of
 the index. When set to true, it will move the cursor after the string
 if a string was passed.
 
-```
+```javascript
 $('input').caret(10);
-
-// Move to position just before word
-$('input').caret('hello');
-
-// Move to position just after word
-$('input').caret('hello', true);
-
-// Move to offset from word's beginning
-$('input').caret('hello', 6);
-```
-
-## $.fn.caretToStart()
-
-This is a shortcut for $.fn.caret(0) as a convenience to you.
-It's actually longer and less efficient than $.fn.caret(0) use
-that, haha.
-
-```
-$('textarea').caretToStart();
 ```
 
 ## $.fn.caretToEnd()
@@ -56,7 +37,7 @@ $('textarea').caretToStart();
 This method moves the caret to the end of the content within your
 element, also for your convenience.
 
-```
+```javascript
 $('input').caretToEnd();
 ```
 
