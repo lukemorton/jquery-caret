@@ -38,13 +38,19 @@
             after: <input type="checkbox" id="textarea-string-after" />
             <button id="textarea-ex-string">Jump to string</button>
         </div>
+		
+		<h2>onFocus Example</h2>
+		<p>
+			<input type="text" id="onfocus-ex" value="Hello world!" />
+		</p>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
         <script src="jquery.caret.js"></script>
         <script>
             jQuery(function ($) {
                 var $inputExample = $('#input-ex'),
-                    $textareaExample = $('#textarea-ex');
+                    $textareaExample = $('#textarea-ex'),
+					$onFocusExample = $('#onfocus-ex');
                 
                 $('#input-start').click(function () {
                     $inputExample.caretToStart();
@@ -93,6 +99,12 @@
                 $('#textarea-buttons').click(function () {
                     if (console.log) console.log($textareaExample.caret());
                 });
+				
+				$onFocusExample.focus(function () {
+					// Delay needed to escape focus since
+					// native focus cannot be suppressed
+					$(this).delay(13).caretToEnd();
+				});
             });
         </script>
     </body>
