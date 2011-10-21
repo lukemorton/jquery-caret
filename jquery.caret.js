@@ -5,19 +5,19 @@
     // Behind the scenes method deals with browser
     // idiosyncrasies and such
     $.caretTo = function (el, index) {
-        if (el.createTextRange) { 
-            var range = el.createTextRange(); 
-            range.move("character", index); 
-            range.select(); 
-        } else if (el.selectionStart != null) { 
-            el.focus(); 
-            el.setSelectionRange(index, index); 
+        if (el.createTextRange) {
+            var range = el.createTextRange();
+            range.move("character", index);
+            range.select();
+        } else if (el.selectionStart != null) {
+            el.focus();
+            el.setSelectionRange(index, index);
         }
     };
-    
+
     // Another behind the scenes that collects the
     // current caret position for an element
-    
+
     // TODO: Get working with Opera
     $.caretPos = function (el) {
         if ("selection" in document) {
@@ -44,22 +44,22 @@
         if (typeof(index) === "undefined") {
             return $.caretPos(this.get(0));
         }
-        
+
         return this.queue(function (next) {
             if (isNaN(index)) {
                 var i = $(this).val().indexOf(index);
-                
+
                 if (offset === true) {
                     i += index.length;
                 } else if (typeof(offset) !== "undefined") {
                     i += offset;
                 }
-                
+
                 $.caretTo(this, i);
             } else {
                 $.caretTo(this, index);
             }
-            
+
             next();
         });
     };
