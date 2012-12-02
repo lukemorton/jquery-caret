@@ -76,4 +76,10 @@
             next();
         });
     };
+
+    // Get a current line number for actual caret position
+    $.fn.caretLine = function () {
+        var lines = $(this).val().substr(0, $.caretPos(this.get(0))).match(/\n/g);
+        return (lines === null ? 1 : lines.length + 1);
+    }
 }(jQuery));

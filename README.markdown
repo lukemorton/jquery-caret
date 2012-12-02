@@ -41,6 +41,14 @@ element, also for your convenience.
 $('input').caretToEnd();
 ```
 
+## $.fn.caretLine()
+
+This method returns current line number for actual caret position.
+
+```javascript
+$('input').caretLine();
+```
+
 ## Author
 
 Luke Morton
