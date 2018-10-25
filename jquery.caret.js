@@ -11,7 +11,7 @@
             range.select(); 
         } else if (el.selectionStart != null) { 
             el.focus(); 
-            el.setSelectionRange(index, index); 
+            setTimeout(function() { el.setSelectionRange(index, index); }, 1);
         }
     };
     
